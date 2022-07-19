@@ -15,6 +15,13 @@ const ListBooksContent = ({ books }) => {
     };
 
     setBookshelves(current => {
+      if (shelf === 'none') {
+        return {
+          ...current,
+          [book.shelf]: removeBookFromShelf(current[book.shelf]),
+        };
+      }
+
       return {
         ...current,
         [book.shelf]: removeBookFromShelf(current[book.shelf]),
