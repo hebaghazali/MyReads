@@ -4,14 +4,14 @@ import { Route, Routes } from 'react-router-dom';
 import ListBooks from './components/ListBooks';
 import SearchBooks from './components/SearchBooks';
 
-import * as BooksAPI from './utils/BooksAPI';
+import { getAll } from './utils/BooksAPI';
 
 function App() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
     const getBooks = async () => {
-      const res = await BooksAPI.getAll();
+      const res = await getAll();
       setBooks(res);
 
       console.log();

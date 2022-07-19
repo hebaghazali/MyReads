@@ -1,7 +1,28 @@
 import Bookshelf from './Bookshelf';
 import { useState, useEffect } from 'react';
+import { update } from '../utils/BooksAPI';
 
 const ListBooksContent = ({ books }) => {
+  const updateShelf = (book, shelf) => {
+    update(book, shelf);
+
+    const addBookToShelf = bookshelf => {
+      return [...bookshelf, book];
+    };
+
+    const removeBookFromShelf = bookshelf => {
+      return bookshelf.filter(b => b.id !== book.id);
+    };
+
+    setBookshelves(current => {
+      return {
+        ...current,
+        [book.shelf]: removeBookFromShelf(current[book.shelf]),
+        [shelf]: addBookToShelf(current[shelf]),
+      };
+    });
+  };
+
   const [bookshelves, setBookshelves] = useState({
     currentlyReading: [],
     wantToRead: [],
@@ -26,14 +47,12 @@ const ListBooksContent = ({ books }) => {
     <div className='list-books-content'>
       <div>
         {Object.keys(bookshelves).map(bookshelfTitle => {
-          const title = bookshelfTitle.replace(/([A-Z])/g, ' $1');
-          const finalTitle = title.charAt(0).toUpperCase() + title.slice(1);
-
           return (
             <Bookshelf
-              key={Math.random().toString(20).slice(2)}
-              bookshelfTitle={finalTitle}
+              key={bookshelfTitle}
+              bookshelfTitle={bookshelfTitle}
               books={bookshelves[bookshelfTitle]}
+              onUpdateShelf={updateShelf}
             />
           );
         })}

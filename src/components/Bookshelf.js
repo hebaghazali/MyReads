@@ -1,13 +1,14 @@
-const Bookshelf = ({ bookshelfTitle, books }) => {
+const Bookshelf = ({ bookshelfTitle, books, onUpdateShelf }) => {
+  const title = bookshelfTitle.replace(/([A-Z])/g, ' $1');
+  const finalTitle = title.charAt(0).toUpperCase() + title.slice(1);
+
   return (
     <div className='bookshelf'>
-      <h2 className='bookshelf-title'>{bookshelfTitle}</h2>
+      <h2 className='bookshelf-title'>{finalTitle}</h2>
       <div className='bookshelf-books'>
         <ol className='books-grid'>
           {books.map(book => (
             <li key={book.id}>
-              {console.log(book)}
-
               <div className='book'>
                 <div className='book-top'>
                   <div
@@ -19,7 +20,10 @@ const Bookshelf = ({ bookshelfTitle, books }) => {
                     }}
                   ></div>
                   <div className='book-shelf-changer'>
-                    <select>
+                    <select
+                      onChange={e => onUpdateShelf(book, e.target.value)}
+                      defaultValue={bookshelfTitle}
+                    >
                       <option value='none' disabled>
                         Move to...
                       </option>
