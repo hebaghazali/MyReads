@@ -40,11 +40,17 @@ It has 3 props:
 2. `booksOnShelf`: This is mainly used in the search page to detect whether each book is on a shelf or not.
 3. `onUpdateShelf`: This _prop_ is used in both pages to invoke the `updateShelf` function.
 
-## Available Scripts
+## Project Setup
 
-In the project directory, you can run:
+First, clone the project by running this command `git clone https://github.com/hebaghazali/MyReads.git`
 
-### `npm start`
+Then, in the project directory, you can run:
+
+### `npm install` or `yarn install`
+
+Installs dependencies 
+
+### `npm start` or `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
