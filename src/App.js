@@ -91,13 +91,7 @@ function App() {
         />
         <Route
           path='/search'
-          element={
-            <SearchBooks
-              books={books}
-              bookshelves={bookshelves}
-              onUpdateShelf={updateShelf}
-            />
-          }
+          element={<SearchBooks books={books} onUpdateShelf={updateShelf} />}
         />
       </Routes>
     </div>
