@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { search } from '../utils/BooksAPI';
-import Books from './Books';
+import Books from '../components/Books';
 
 const SearchBooks = ({ books, onUpdateShelf }) => {
   const [searchQuery, setSearchQuery] = useState('');

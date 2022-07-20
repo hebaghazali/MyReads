@@ -1,15 +1,14 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import ListBooks from './components/ListBooks';
-import SearchBooks from './components/SearchBooks';
+import ListBooks from './pages/ListBooks';
+import SearchBooks from './pages/SearchBooks';
 
 import { getAll, update } from './utils/BooksAPI';
 
 function App() {
   const updateShelf = (book, shelf) => {
     const prevShelf = book.shelf;
-
     book.shelf = shelf;
     update(book, shelf);
 

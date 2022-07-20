@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import ListBooksContent from './ListBooksContent';
+import ListBooksContent from '../components/ListBooksContent';
 
 const ListBooks = ({ bookshelves, onUpdateShelf }) => {
   return (
